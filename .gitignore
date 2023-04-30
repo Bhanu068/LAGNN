@@ -1,0 +1,15 @@
+*.pyc
+__pycache__/
+FUNSD/*
+form_graphs/*
+egat_model.py
+logs/*
+checkpoints/*
+prediction_files/*
+
+# Except for the directories themselves
+!FUNSD/
+!form_graphs/
+!logs/
+!checkpoints/
+!prediction_files/

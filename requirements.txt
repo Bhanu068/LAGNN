@@ -1,0 +1,11 @@
+datasets==2.4.0
+dgl==0.8.1
+dgl-cu102==0.6.1
+gurobipy==9.5.1
+matplotlib==2.2.3
+networkx==2.6.3
+numpy==1.21.6
+scikit-learn==1.0.2
+seqeval==1.2.2
+torch==1.10.0
+tqdm==4.64.0
