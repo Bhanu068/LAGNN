@@ -5,4 +5,5 @@ python main.py \
 --data_dir FUNSD \
 --best_checkpoint_path checkpoints/test_egat.pth \
 --logger_file logs/logger.log \
---graph_save_dir form_graphs
+--graph_save_dir form_graphs \
+--seed 6222

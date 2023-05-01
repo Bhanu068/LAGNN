@@ -6,4 +6,5 @@ python semantic_form_ilp.py \
 --edge_pred_file ./prediction_files/epreds_latest_en.npy \
 --edge_feats_file ./prediction_files/edge_feats_en.npy \
 --test_graphs_file ./form_graphs/en/semantic_form_graph_all_test.bin \
---logger_file ./logs/logger_ilp.log
+--logger_file ./logs/logger_ilp.log \
+--seed 6222
