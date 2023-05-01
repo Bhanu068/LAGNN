@@ -4,7 +4,7 @@ Bhanu Prakash Voutharoja, Lizhen Qu, and Fatemeh Shiri. [Language Independent Ne
 
 ## Introduction
 <p align="center">
-    <img src="lagnn.png" width = "600"/>
+    <img src="images/lagnn.png" width = "600"/>
 </p>
 
 > Recent works on form understanding mostly employ multimodal transformers or large-scale pre-trained language models. These models need ample data for pre-training. In contrast, humans can usually identify key-value pairings from a form only by looking at layouts, even if they don't comprehend the language used. No prior research has been conducted to investigate how helpful layout information alone is for form understanding. Hence, we propose a unique entity-relation graph parsing method for scanned forms called LAGNN, a language-independent Graph Neural Network model. Our model parses a form into a word-relation graph in order to identify entities and relations jointly and reduce the time complexity of inference. This graph is then transformed by deterministic rules into a fully connected entity-relation graph. Our model simply takes into account relative spacing between bounding boxes from layout information to facilitate easy transfer across languages. To further improve the performance of LAGNN, and achieve isomorphism between entity-relation graphs and word-relation graphs, we use integer linear programming (ILP) based inference.
@@ -38,9 +38,9 @@ bash run_ilp.sh
 ```
 ## Pending Work
 
-- [x] Code for constraint 1
-- [x] Code for constraint 5
-- [x] Code to reproduce Table 2
+- [ ] Code for constraint 1
+- [ ] Code for constraint 5
+- [ ] Code to reproduce Table 2
 
 ## Citation
 If you find this work or code is helpful in your research, please cite:

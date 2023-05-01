@@ -298,19 +298,19 @@ if __name__ == "__main__":
     if args.create_graphs:
         if args.lang == "en":
             create_graph_list(edge_class_to_idx, args.data_dir,
-                            args.lang, "all_train", args.graph_save_dir)
+                            args.lang, "train", args.graph_save_dir)
             create_graph_list(edge_class_to_idx, args.data_dir,
-                            args.lang, "all_val", args.graph_save_dir)
+                            args.lang, "val", args.graph_save_dir)
         create_graph_list(edge_class_to_idx, args.data_dir,
-                          args.lang, "all_test", args.graph_save_dir)
+                          args.lang, "test", args.graph_save_dir)
 
     if args.lang == "en":
         train_graphs_full = load_graphs(os.path.join(
-            args.graph_save_dir, args.lang, f"semantic_form_graph_all_train.bin"))
+            args.graph_save_dir, args.lang, f"semantic_form_graph_train.bin"))
         val_graphs_full = load_graphs(os.path.join(
-            args.graph_save_dir, args.lang, "semantic_form_graph_all_val.bin"))
+            args.graph_save_dir, args.lang, "semantic_form_graph_val.bin"))
     test_graphs_full = load_graphs(os.path.join(
-        args.graph_save_dir, args.lang, "semantic_form_graph_all_test.bin"))
+        args.graph_save_dir, args.lang, "semantic_form_graph_test.bin"))
 
     net_params = {"in_dim": args.in_node_feats, "hidden_dim": args.out_node_feats, "out_dim": args.out_edge_feats,
                   "n_classes": args.classes, "n_heads": args.num_heads, "in_feat_dropout": 0.0, 
