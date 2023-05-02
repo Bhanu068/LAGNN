@@ -1,3 +1,5 @@
 *.pyc
 __pycache__/
-egat_model.py
+prediction_files/.DS_Store
+checkpoints/.DS_Store
+.DS_Store

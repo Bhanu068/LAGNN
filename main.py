@@ -312,13 +312,7 @@ if __name__ == "__main__":
     test_graphs_full = load_graphs(os.path.join(
         args.graph_save_dir, args.lang, "semantic_form_graph_test.bin"))
 
-    net_params = {"in_dim": args.in_node_feats, "hidden_dim": args.out_node_feats, "out_dim": args.out_edge_feats,
-                  "n_classes": args.classes, "n_heads": args.num_heads, "in_feat_dropout": 0.0, 
-                  "dropout": 0.0, "L": 1, "readout": 0, "layer_norm": True, 
-                  "batch_norm": False, "residual": False, "device": args.device, "e_n_classes": args.classes}
-    
-    model = GraphTransformerNet(net_params)
-    # model = EGAT(args)
+    model = EGAT(args)
     model.to(args.device)
 
     opt = torch.optim.Adam(model.parameters(), lr=args.lr)
