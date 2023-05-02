@@ -18,7 +18,7 @@ bash setup.sh
 ## Data Preparation
 
 Download all the data files from [drive.](https://drive.google.com/drive/folders/1BXqWqCg1a6AuxQpeGL6ZjeZ9MCqOQ0r-?usp=sharing)
-Alternatively, the files under form_graphs, and prediction_files folders are automatically generated during the training and testing phase. However, it is mandatory to download all the files in FUNSD folder.
+Alternatively, the files under form_graphs folder are automatically generated during the training phase.
 
 ## Run
 
@@ -39,7 +39,6 @@ bash run_ilp.sh
 ## Pending Work
 
 - [ ] Code for constraint 1
-- [ ] Code for constraint 5
 - [ ] Code to reproduce Table 2
 
 ## Citation

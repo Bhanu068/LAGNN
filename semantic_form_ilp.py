@@ -21,8 +21,8 @@ def parse_args():
                         help='path to the saved edge features file')
     parser.add_argument('--test_graphs_file', type=str, required=True,
                         help='path to the saved test graphs to perform ILP optimization')
-    parser.add_argument('--seed', type=int, default=9222,
-                        help='random seed (default: 9222)')
+    parser.add_argument('--seed', type=int, default=6222,
+                        help='random seed (default: 6222)')
     parser.add_argument('--logger_file', type=str, default='./logger_ILP.log',
                         help='path to save the logs of ILP optimizer.')
     return parser.parse_args()
@@ -47,24 +47,16 @@ def printResults(args, gurobi_vars, logger):
                 for k in range(len(w)):
                     if gurobi_vars[doc_idx][widx, k].X > 0.0:
                         sub_gurobi_preds.append(k)
-            tot_gurobi_preds.append(sub_gurobi_preds)
-            tot_gnn_preds.append(sub_gnn_preds)
-            tot_org_trues.append(sub_gnn_trues)
+            tot_gurobi_preds.extend(sub_gurobi_preds)
+            tot_gnn_preds.extend(sub_gnn_preds)
+            tot_org_trues.extend(sub_gnn_trues)
 
-        mlb = MultiLabelBinarizer()
-        mlb.fit(tot_org_trues)
-        bin_tot_org_trues = mlb.transform(tot_org_trues)
-        
-        mlb.fit(tot_gnn_preds)
-        bin_tot_gnn_preds = mlb.transform(tot_gnn_preds)
-
-        mlb.fit(tot_gurobi_preds)
-        bin_tot_gurobi_preds = mlb.transform(tot_gurobi_preds)
-
-        gnn_acc = metrics.f1_score(bin_tot_org_trues, bin_tot_gnn_preds, average = "macro")
+        gnn_acc = metrics.f1_score(tot_org_trues, tot_gnn_preds, average = "macro")
         logger.info(f"Total GNN Pred Accuracy: {gnn_acc}")
-        gurobi_acc = metrics.f1_score(bin_tot_org_trues, bin_tot_gurobi_preds, average = "macro")
+        logger.info(f"Classification report of GNN predictions: \n {metrics.classification_report(tot_org_trues, tot_gnn_preds)}")
+        gurobi_acc = metrics.f1_score(tot_org_trues, tot_gurobi_preds, average = "macro")
         logger.info(f"Total Gurobi Pred Accuracy: {gurobi_acc}")
+        logger.info(f"Classification report of Gurobi predictions: \n {metrics.classification_report(tot_org_trues, tot_gurobi_preds)}")
     else:
         logger('No solution')
     
@@ -127,28 +119,7 @@ def load_required_files(args):
     edge_feats = np.load(f"{args.edge_feats_file}", allow_pickle = True)
     test_graphs = load_graphs(f"{args.test_graphs_file}")[0]
 
-    m_preds, m_trues, m_gnn_preds, m_edge_feats = [], [], [], []
-
-    fin_test_graphs = []
-    for tg_idx, tg in enumerate(test_graphs):
-        elabels = tg.edata["label"]
-        mask = elabels != 5
-        fin_test_graphs.append(tg.edge_subgraph(mask))
-        sub_lst_preds, sub_lst_trues, sub_lst_gnn_preds, sub_lst_edge_feats = [], [], [], []
-        for p_idx, p in enumerate(elabels):
-            if p != 5:
-                sub_lst_preds.append(preds[tg_idx][p_idx])
-                sub_lst_trues.append(trues[tg_idx][p_idx])
-                sub_lst_gnn_preds.append(gnn_preds[tg_idx][p_idx])
-                sub_lst_edge_feats.append(edge_feats[tg_idx][p_idx])
-
-        m_preds.append(np.array(sub_lst_preds))
-        m_trues.append(np.array(sub_lst_trues))
-        m_gnn_preds.append(np.array(sub_lst_gnn_preds))
-        m_edge_feats.append(np.array(sub_lst_edge_feats))
-
-    preds, trues, gnn_preds, edge_feats = np.array(m_preds), np.array(m_trues), np.array(m_gnn_preds), np.array(m_edge_feats)
-    return preds, trues, gnn_preds, edge_feats, fin_test_graphs
+    return preds, trues, gnn_preds, edge_feats, test_graphs
 
 if __name__ == "__main__":
 

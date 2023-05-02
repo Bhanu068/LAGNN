@@ -30,8 +30,8 @@ def parse_args():
                         help='number of epochs to wait before early stopping (default: 100)')
     parser.add_argument('--logger_file', type=str, required=True,
                         help='path to save the logger file')
-    parser.add_argument('--seed', type=int, default=9222,
-                        help='random seed (default: 9222)')
+    parser.add_argument('--seed', type=int, default=6222,
+                        help='random seed (default: 6222)')
     parser.add_argument('--create_graphs', action='store_true',
                         help='create graphs flag (default: False)')
     parser.add_argument('--data_dir', type=str, required=True,
@@ -54,7 +54,7 @@ def parse_args():
                         help='dimension size of edge features')
     parser.add_argument('--out_edge_feats', type=int, default=64,
                         help='hidden dimension size of edge features')
-    parser.add_argument('--num_heads', type=int, default=2,
+    parser.add_argument('--num_heads', type=int, default=3,
                         help='number of heads for attention')
 
     args = parser.parse_args()
