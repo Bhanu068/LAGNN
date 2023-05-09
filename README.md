@@ -1,6 +1,6 @@
 # Language Independent Neuro-Symbolic Semantic Parsing for Form Understanding
 This repo is the official implementation of the paper:
-Bhanu Prakash Voutharoja, Lizhen Qu, and Fatemeh Shiri. [Language Independent Neuro-Symbolic Semantic Parsing for Form Understanding](https://www.google.com/). ICDAR 2023
+Bhanu Prakash Voutharoja, Lizhen Qu, and Fatemeh Shiri. [Language Independent Neuro-Symbolic Semantic Parsing for Form Understanding](https://arxiv.org/pdf/2305.04460.pdf). ICDAR 2023
 
 ## Introduction
 <p align="center">
