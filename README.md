@@ -44,10 +44,16 @@ bash run_ilp.sh
 ## Citation
 If you find this work or code is helpful in your research, please cite:
 ```bibtex
-@article{voutharoja2023LAGNN,
-  title={Language Independent Neuro-Symbolic Semantic Parsing for Form Understanding},
-  author={Voutharoja, Bhanu Prakash and Qu, Lizhen and Shiri, Fatemeh},
-  booktitle={The 17th International Conference on Document Analysis and Recognition (ICDAR)},
-  year={2023}
+@InProceedings{lagnn,
+author="Voutharoja, Bhanu Prakash
+and Qu, Lizhen
+and Shiri, Fatemeh",
+title="Language Independent Neuro-Symbolic Semantic Parsing for Form Understanding",
+booktitle="Document Analysis and Recognition - ICDAR 2023",
+year="2023",
+publisher="Springer Nature Switzerland",
+address="Cham",
+pages="130--146",
+isbn="978-3-031-41679-8"
 }
 ```
